@@ -146,4 +146,20 @@
     block-size: 12px !important;
     inline-size: 12px !important;
   }
+
+  /* Thunderbird draws card buttons (twisty included) at 70% opacity. */
+  #threadTree[rows="thread-card"] .card-layout td button.twisty {
+    opacity: 1 !important;
+  }
+
+  /* ---------- No washed-out layers ----------
+     A userChrome.css such as Fluentbird may fade the whole mail area
+     (#messengerBody at 90%) and grey the card subject. Undo both. */
+  #messengerBody {
+    opacity: 1 !important;
+  }
+
+  .thread-card-subject-container {
+    color: var(--cl-text-2) !important;
+  }
 }
