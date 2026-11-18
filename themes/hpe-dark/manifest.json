@@ -13,10 +13,10 @@
   "theme": {
     "colors": {
       "frame": "#1d1f27",
-      "tab_background_text": "#e6e8e9",
+      "tab_background_text": "#ffffff",
       "toolbar": "#1d1f27",
       "toolbar_field": "#292d3a",
-      "toolbar_field_text": "#e6e8e9",
+      "toolbar_field_text": "#ffffff",
       "toolbar_field_border": "#3e4550"
     },
     "properties": {

@@ -14,9 +14,10 @@
     --cl-chrome: light-dark(#f7f7f7, #1d1f27);    /* grey-50 / grey-1300 */
     --cl-hairline: light-dark(#d4d8db, rgba(255, 255, 255, 0.12)); /* border-weak */
 
-    /* Text */
-    --cl-text: light-dark(#3e4550, #e6e8e9);      /* text-default */
-    --cl-text-2: light-dark(#606a70, #b1b9be);    /* text-weak */
+    /* Text, one step darker than the tokens for more contrast:
+       main = text-strong (Midnight / white), secondary = text-default. */
+    --cl-text: light-dark(#292d3a, #ffffff);      /* text-strong */
+    --cl-text-2: light-dark(#3e4550, #e6e8e9);    /* text-default */
 
     /* States */
     --cl-hover: light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.06)); /* background-hover */
@@ -107,6 +108,16 @@
 
   .button.check-button[aria-pressed="true"]:enabled:hover {
     background-color: color-mix(in srgb, var(--cl-pill), var(--cl-accent-ink) 12%) !important;
+  }
+
+  /* ---------- Contrast in the message list ---------- */
+  #threadTree {
+    color: var(--cl-text) !important;
+  }
+
+  /* Date: Clean fades it to 60%; keep it readable. */
+  #threadTree[rows="thread-card"] .card-container .date {
+    opacity: 0.85 !important;
   }
 
   /* ---------- Purple touch: unread markers ---------- */
