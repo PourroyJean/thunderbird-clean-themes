@@ -33,5 +33,67 @@
     --layout-background-2: light-dark(#f7f7f7, color-mix(in srgb, #292d3a, white 6%)) !important;
     --layout-background-3: light-dark(#e6e8e9, color-mix(in srgb, #292d3a, white 12%)) !important;
     --layout-background-4: light-dark(#d4d8db, color-mix(in srgb, #292d3a, white 20%)) !important;
+
+    /* Shapes: fields and selects get radius-small (formField token); buttons
+       are pills (button borderRadius = radius-full), set below. */
+    --button-border-radius: 8px !important;
+    /* No room for the old pressed indicator: the pill fill shows the state. */
+    --button-pressed-indicator-padding: 0px !important;
+  }
+
+  /* ---------- Buttons: HPE pills ---------- */
+  .button {
+    border-radius: 9999px !important;
+  }
+
+  /* Button groups (quick filter bar): separate pills instead of one box
+     cut into rectangles. */
+  .button-group {
+    border: none !important;
+    background: transparent !important;
+    gap: 4px;
+  }
+
+  .button-group :is(.button, input) {
+    border: 1px solid transparent !important;
+    border-radius: 9999px !important;
+  }
+
+  /* Toggle buttons (Quick filter, Unread, Starred, Tags, ...): HPE toolbar
+     buttons. Transparent at rest, soft fill on hover, pale green with green
+     ink when on. The small bar on the left is no longer needed. */
+  .button.check-button {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    padding-inline: 12px !important;
+  }
+
+  .button.check-button.icon-button {
+    padding-inline: 32px 12px !important;
+    background-position: 10px center !important;
+  }
+
+  .button.check-button.icon-only {
+    padding: 0 !important;
+    aspect-ratio: 1 !important;
+    background-position: center !important;
+  }
+
+  .button.check-button::before {
+    display: none !important;
+  }
+
+  .button.check-button:enabled:hover {
+    background-color: var(--cl-hover) !important;
+  }
+
+  .button.check-button[aria-pressed="true"] {
+    background-color: var(--cl-pill) !important;
+    color: var(--cl-accent-ink) !important;
+  }
+
+  .button.check-button[aria-pressed="true"]:enabled:hover {
+    background-color: color-mix(in srgb, var(--cl-pill), var(--cl-accent-ink) 12%) !important;
   }
 }
