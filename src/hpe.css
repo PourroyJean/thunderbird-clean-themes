@@ -129,4 +129,21 @@
     --read-status-fill: var(--cl-touch) !important;
     --read-status-stroke: var(--cl-touch) !important;
   }
+
+  /* Thread twisty (expand/collapse arrow): purple and bold. The icon has a
+     fixed thin path, so a small drop-shadow on each side thickens it. */
+  #threadTree .twisty-icon {
+    -moz-context-properties: fill, stroke !important;
+    fill: var(--cl-touch) !important;
+    stroke: var(--cl-touch) !important;
+    filter:
+      drop-shadow(0.6px 0 0 var(--cl-touch))
+      drop-shadow(-0.6px 0 0 var(--cl-touch))
+      drop-shadow(0 0.6px 0 var(--cl-touch)) !important;
+  }
+
+  #threadTree[rows="thread-card"] .twisty-icon {
+    block-size: 12px !important;
+    inline-size: 12px !important;
+  }
 }
