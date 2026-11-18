@@ -31,7 +31,8 @@ build
 if [ "${1:-}" = "--watch" ]; then
   last=""
   while sleep 1; do
-    now=$(find src themes -type f -exec stat -f '%m %N' {} + 2>/dev/null | sort | shasum)
+    # Hash file names and contents: works with both BSD and GNU tools.
+    now=$(find src themes -type f | LC_ALL=C sort | while IFS= read -r f; do printf '%s ' "$f"; cksum < "$f"; done | cksum)
     [ "$now" = "$last" ] || { [ -z "$last" ] || build; last="$now"; }
   done
 fi
