@@ -162,4 +162,86 @@
   .thread-card-subject-container {
     color: var(--cl-text-2) !important;
   }
+
+  /* ---------- Compose toolbar: HPE buttons ----------
+     Secondary buttons: white pill, border-default outline, Midnight text,
+     green icons. Send: primary, filled green. Fills are painted with
+     background-image and outlines with box-shadow, because a userChrome.css
+     (Fluentbird) forces background-color with !important, which a theme
+     cannot outrank. */
+  #composeToolbar2 > .toolbarbutton-1 {
+    --hpe-btn-fill: var(--cl-content);
+    --hpe-btn-border: light-dark(#b1b9be, rgba(255, 255, 255, 0.36)); /* border-default */
+    background-image: linear-gradient(var(--hpe-btn-fill), var(--hpe-btn-fill)) !important;
+    box-shadow: inset 0 0 0 1px var(--hpe-btn-border) !important;
+    border-radius: 9999px !important;
+    color: var(--cl-text) !important;
+    font-weight: 500 !important;
+    margin-inline-end: 6px !important;
+    --toolbarbutton-icon-fill: var(--cl-accent-ink) !important;
+    --toolbarbutton-icon-fill-opacity: 1 !important;
+
+    &:not([disabled]):hover {
+      --hpe-btn-fill: color-mix(in srgb, var(--cl-content), var(--cl-text) 7%);
+    }
+
+    &:not([disabled]):hover:active,
+    &[open="true"] {
+      --hpe-btn-fill: color-mix(in srgb, var(--cl-content), var(--cl-text) 13%);
+    }
+
+    /* On (e.g. Contacts sidebar open): pale green with a green outline */
+    &[checked]:not([disabled]) {
+      --hpe-btn-fill: var(--cl-pill);
+      --hpe-btn-border: var(--cl-accent-ink);
+      color: var(--cl-accent-ink) !important;
+    }
+
+    /* Unavailable (e.g. Encrypt without a key): readable, but clearly off */
+    &[disabled] {
+      --hpe-btn-fill: transparent;
+      --hpe-btn-border: var(--cl-hairline);
+      --toolbarbutton-icon-fill: var(--cl-text-2) !important;
+      color: var(--cl-text-2) !important;
+      opacity: 0.75 !important;
+    }
+
+    /* Split buttons (Spelling, Save, Attach): one pill, inner parts clear */
+    & > :is(.toolbarbutton-menubutton-button, .toolbarbutton-menubutton-dropmarker) {
+      background: transparent !important;
+      border-color: transparent !important;
+      box-shadow: none !important;
+    }
+
+    & > .toolbarbutton-menubutton-button {
+      border-radius: 9999px 0 0 9999px !important;
+    }
+
+    & > .toolbarbutton-menubutton-dropmarker {
+      border-radius: 0 9999px 9999px 0 !important;
+      color: var(--cl-text-2) !important;
+    }
+
+    /* Gap between icon and label (Fluentbird pulls the label onto the icon) */
+    & .toolbarbutton-icon {
+      margin-inline: 2px 6px !important;
+    }
+  }
+
+  /* Send: primary button, filled green (background-primary-strong) */
+  #composeToolbar2 > #button-send:not([disabled]) {
+    --hpe-btn-fill: var(--cl-accent);
+    --hpe-btn-border: transparent;
+    --toolbarbutton-icon-fill: currentColor !important;
+    color: var(--cl-accent-text) !important;
+    font-weight: 600 !important;
+
+    &:hover {
+      --hpe-btn-fill: light-dark(#006750, #00e0af); /* background-primary-strong-hover */
+    }
+
+    &:hover:active {
+      --hpe-btn-fill: light-dark(#074738, #66ebcf);
+    }
+  }
 }
