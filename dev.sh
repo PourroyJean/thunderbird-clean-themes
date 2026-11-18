@@ -10,6 +10,9 @@ cd "$(dirname "$0")"
 build() {
   rm -rf dev
   mkdir -p dev/xpi
+  # Thunderbird caches stylesheets by URL, and a reloaded temporary add-on
+  # keeps its URL. A new file name on every build forces a fresh load.
+  css="theme-$(date +%s).css"
   for dir in themes/*/; do
     key=$(basename "$dir")
     out="dev/$key"
@@ -18,12 +21,13 @@ build() {
         -e 's/"strict_min_version": "\([^"]*\)",/"strict_min_version": "\1"/' \
         -e 's/\("id": "[^"@]*\)@/\1-dev@/' \
         -e 's/^\(  "name": "[^"]*\)"/\1 (dev)"/' \
+        -e "s/\"stylesheet\": \"theme.css\"/\"stylesheet\": \"$css\"/" \
         "${dir}manifest.json" > "$out/manifest.json"
     name=$(sed -n 's/^  "name": "\([^"]*\)".*/\1/p' "$out/manifest.json")
-    sed "s/@NAME@/$name/; s/@VERSION@/dev/" src/theme.css > "$out/theme.css"
-    case "$key" in *mono*) cat src/mono.css >> "$out/theme.css" ;; esac
-    case "$key" in hpe-*) cat src/hpe.css >> "$out/theme.css" ;; esac
-    (cd "$out" && zip -qX "../xpi/$key-dev.xpi" manifest.json theme.css)
+    sed "s/@NAME@/$name/; s/@VERSION@/dev/" src/theme.css > "$out/$css"
+    case "$key" in *mono*) cat src/mono.css >> "$out/$css" ;; esac
+    case "$key" in hpe-*) cat src/hpe.css >> "$out/$css" ;; esac
+    (cd "$out" && zip -qX "../xpi/$key-dev.xpi" manifest.json "$css")
   done
   echo "[$(date +%H:%M:%S)] dev/ rebuilt"
 }
