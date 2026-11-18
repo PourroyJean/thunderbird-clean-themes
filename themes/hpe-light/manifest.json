@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+  "name": "HPE Light",
+  "description": "Clean theme in the HPE palette. Light.",
+  "version": "1.1.7",
+  "author": "Tamás Baka (HPE palette: Jean Pourroy)",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "hpe-light@pourroyjean.clean-themes",
+      "strict_min_version": "153.0"
+    }
+  },
+  "theme": {
+    "colors": {
+      "frame": "#f7f7f7",
+      "tab_background_text": "#3e4550",
+      "toolbar": "#f7f7f7",
+      "toolbar_field": "#ffffff",
+      "toolbar_field_text": "#3e4550",
+      "toolbar_field_border": "#d4d8db"
+    },
+    "properties": {
+      "color_scheme": "light",
+      "content_color_scheme": "light"
+    }
+  },
+  "theme_experiment": {
+    "stylesheet": "theme.css"
+  }
+}

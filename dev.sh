@@ -22,6 +22,7 @@ build() {
     name=$(sed -n 's/^  "name": "\([^"]*\)".*/\1/p' "$out/manifest.json")
     sed "s/@NAME@/$name/; s/@VERSION@/dev/" src/theme.css > "$out/theme.css"
     case "$key" in *mono*) cat src/mono.css >> "$out/theme.css" ;; esac
+    case "$key" in hpe-*) cat src/hpe.css >> "$out/theme.css" ;; esac
     (cd "$out" && zip -qX "../xpi/$key-dev.xpi" manifest.json theme.css)
   done
   echo "[$(date +%H:%M:%S)] dev/ rebuilt"

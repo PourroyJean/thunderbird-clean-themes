@@ -42,6 +42,9 @@ for dir in themes/*/; do
   case "$key" in
     *mono*) cat src/mono.css >> "$work/theme.css" ;;
   esac
+  case "$key" in
+    hpe-*) cat src/hpe.css >> "$work/theme.css" ;;
+  esac
 
   (cd "$work" && zip -qX "../../$key-$version.xpi" manifest.json theme.css)
   echo "built dist/$key-$version.xpi"
@@ -65,6 +68,8 @@ base="https://celest-watches.com/clean-themes/downloads/$version"
   sep=''
   for dir in themes/*/; do
     key=$(basename "$dir")
+    # The HPE themes are not published on the upstream microsite.
+    case "$key" in hpe-*) continue ;; esac
     id=$(field id "$dir/manifest.json")
     printf '%s    "%s": {\n' "$sep" "$id"
     printf '      "updates": [\n'

@@ -1,0 +1,37 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ *
+ * HPE palette for the Clean themes (fork addition). The build scripts append
+ * this file to src/theme.css for the hpe-* themes. Values come from the
+ * official HPE design tokens (npm "hpe-design-tokens" 2.4.0); each line
+ * names its token. Only colours change: the layout stays Clean's. */
+
+@media not (prefers-contrast) {
+  :root {
+    /* Surfaces: content = background-front, chrome = background-back */
+    --cl-content: light-dark(#ffffff, #292d3a);   /* white-100 / grey-1000 */
+    --cl-chrome: light-dark(#f7f7f7, #1d1f27);    /* grey-50 / grey-1300 */
+    --cl-hairline: light-dark(#d4d8db, rgba(255, 255, 255, 0.12)); /* border-weak */
+
+    /* Text */
+    --cl-text: light-dark(#3e4550, #e6e8e9);      /* text-default */
+    --cl-text-2: light-dark(#606a70, #b1b9be);    /* text-weak */
+
+    /* States */
+    --cl-hover: light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.06)); /* background-hover */
+    --cl-field: light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.06)); /* background-contrast */
+    --cl-pill: light-dark(#d1ffee, #093d32);      /* background-selected-primary */
+    --cl-radius: 8px;                             /* radius-small */
+
+    /* Accent: HPE green instead of the system accent colour */
+    --cl-accent: light-dark(#068667, #05cc93);    /* background-selected-primary-strong */
+    --cl-accent-text: light-dark(#ffffff, #292d3a); /* text-onSelectedPrimaryStrong */
+    --cl-accent-ink: light-dark(#006750, #05cc93); /* text-primary */
+
+    /* Control states (button, hover, pressed) */
+    --layout-background-2: light-dark(#f7f7f7, color-mix(in srgb, #292d3a, white 6%)) !important;
+    --layout-background-3: light-dark(#e6e8e9, color-mix(in srgb, #292d3a, white 12%)) !important;
+    --layout-background-4: light-dark(#d4d8db, color-mix(in srgb, #292d3a, white 20%)) !important;
+  }
+}

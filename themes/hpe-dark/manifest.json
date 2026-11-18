@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+  "name": "HPE Dark",
+  "description": "Clean theme in the HPE palette. Dark.",
+  "version": "1.1.7",
+  "author": "Tamás Baka (HPE palette: Jean Pourroy)",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "hpe-dark@pourroyjean.clean-themes",
+      "strict_min_version": "153.0"
+    }
+  },
+  "theme": {
+    "colors": {
+      "frame": "#1d1f27",
+      "tab_background_text": "#e6e8e9",
+      "toolbar": "#1d1f27",
+      "toolbar_field": "#292d3a",
+      "toolbar_field_text": "#e6e8e9",
+      "toolbar_field_border": "#3e4550"
+    },
+    "properties": {
+      "color_scheme": "dark",
+      "content_color_scheme": "dark"
+    }
+  },
+  "theme_experiment": {
+    "stylesheet": "theme.css"
+  }
+}
