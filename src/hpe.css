@@ -244,4 +244,26 @@
       --hpe-btn-fill: light-dark(#074738, #66ebcf);
     }
   }
+
+  /* ---------- Formatting bar (Bold, Italic, ...) ----------
+     Fluentbird shifts every .toolbarbutton-icon 5px to the right, which
+     pushes the icon off-centre in its highlight. Centre the icon in a
+     square button with an 8px radius (radius-small). */
+  #FormatToolbar toolbarbutton.formatting-button {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-inline-size: 28px !important;
+    min-block-size: 28px !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
+
+    & .toolbarbutton-icon {
+      margin: 0 !important;
+    }
+
+    &[wantdropmarker="true"] {
+      padding-inline-end: 16px !important;
+    }
+  }
 }
