@@ -44,6 +44,12 @@
     /* New-mail sparkle: secondary palette only. Cyan body, Blue outline. */
     --hpe-new-fill: var(--hpe-cyan);
     --hpe-new-stroke: var(--hpe-blue);
+    /* Starred (flagged) mail: Blue star, pale blue row with a Blue edge */
+    --hpe-star-fill: light-dark(var(--hpe-blue), #65aef9);  /* blue-200 in dark */
+    --hpe-star-row: light-dark(#e3f1ff, #1c3053);           /* blue-50 / blue-1000 */
+    --hpe-star-edge: light-dark(var(--hpe-blue), #65aef9);
+    --thread-pane-flag-fill: var(--hpe-star-fill) !important;
+    --thread-pane-flag-stroke: var(--hpe-star-fill) !important;
 
     /* Control states (button, hover, pressed) */
     --layout-background-2: light-dark(#f7f7f7, color-mix(in srgb, #292d3a, white 6%)) !important;
@@ -314,5 +320,31 @@
     &:hover:active {
       box-shadow: inset 0 0 0 40px var(--cl-pill) !important;
     }
+  }
+
+  /* ---------- Starred mail stands out ----------
+     Table view: the whole row takes a pale blue background with a 3px Blue
+     bar on its first cell. Card view: the card does the same. A selected
+     row keeps the selection colour. Overrides custom.css colours too. */
+  #threadTree [is="tree-view-table-body"] > tr.table-layout[data-properties~="flagged"]:not(.selected) {
+    background-color: var(--hpe-star-row) !important;
+  }
+
+  #threadTree [is="tree-view-table-body"] > tr.table-layout[data-properties~="flagged"] > td:first-child {
+    box-shadow: inset 3px 0 0 var(--hpe-star-edge) !important;
+  }
+
+  #threadTree[rows="thread-card"] tr.card-layout[data-properties~="flagged"]:not(.selected) .card-container {
+    background-color: var(--hpe-star-row) !important;
+  }
+
+  #threadTree[rows="thread-card"] tr.card-layout[data-properties~="flagged"] .card-container {
+    border: 1px solid transparent !important;
+    box-shadow: inset 4px 0 0 var(--hpe-star-edge) !important;
+  }
+
+  /* The star itself: full opacity, Blue */
+  #threadTree tr[data-properties~="flagged"] :is(.tree-button-flag, .button-star) {
+    opacity: 1 !important;
   }
 }
