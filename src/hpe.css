@@ -44,9 +44,9 @@
     /* New-mail sparkle: secondary palette only. Cyan body, Blue outline. */
     --hpe-new-fill: var(--hpe-cyan);
     --hpe-new-stroke: var(--hpe-blue);
-    /* Starred (flagged) mail: Blue star, pale blue row with a Blue edge */
+    /* Starred (flagged) mail: Blue star, blue-tinted row with a Blue edge */
     --hpe-star-fill: light-dark(var(--hpe-blue), #65aef9);  /* blue-200 in dark */
-    --hpe-star-row: light-dark(#e3f1ff, #1c3053);           /* blue-50 / blue-1000 */
+    --hpe-star-row: light-dark(color-mix(in srgb, #0070f8 18%, white), color-mix(in srgb, #0070f8 35%, #292d3a));
     --hpe-star-edge: light-dark(var(--hpe-blue), #65aef9);
     --thread-pane-flag-fill: var(--hpe-star-fill) !important;
     --thread-pane-flag-stroke: var(--hpe-star-fill) !important;
@@ -331,7 +331,11 @@
   }
 
   #threadTree [is="tree-view-table-body"] > tr.table-layout[data-properties~="flagged"] > td:first-child {
-    box-shadow: inset 3px 0 0 var(--hpe-star-edge) !important;
+    box-shadow: inset 4px 0 0 var(--hpe-star-edge) !important;
+  }
+
+  #threadTree [is="tree-view-table-body"] > tr.table-layout[data-properties~="flagged"] {
+    font-weight: 600 !important;
   }
 
   #threadTree[rows="thread-card"] tr.card-layout[data-properties~="flagged"]:not(.selected) .card-container {
