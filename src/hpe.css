@@ -41,6 +41,9 @@
     /* Purple, used sparingly: unread markers only. Lifted in dark mode
        (purple-200 token) so it stays readable on Midnight. */
     --cl-touch: light-dark(var(--hpe-purple), #9b84fc);
+    /* New-mail sparkle: Mint Green body, HPE Green outline (Jade in dark) */
+    --hpe-new-fill: var(--hpe-mint);
+    --hpe-new-stroke: light-dark(var(--hpe-green), var(--hpe-jade));
 
     /* Control states (button, hover, pressed) */
     --layout-background-2: light-dark(#f7f7f7, color-mix(in srgb, #292d3a, white 6%)) !important;
@@ -265,5 +268,20 @@
     &[wantdropmarker="true"] {
       padding-inline-end: 16px !important;
     }
+  }
+
+  /* ---------- New-mail sparkle stars: HPE Mint / Green ----------
+     Thunderbird paints them yellow and orange in the list (table and card
+     views), on threads and in the folder pane. */
+  #threadTree tr[data-properties~="new"] .subject-line img,
+  #threadTree .card-layout[data-properties~="hasNew"] button.twisty::before,
+  #folderTree li > .container > .new-icon {
+    fill: var(--hpe-new-fill) !important;
+    stroke: var(--hpe-new-stroke) !important;
+  }
+
+  #threadTree[rows="thread-card"] .card-layout[data-properties~="unread"][data-properties~="new"] {
+    --read-status-fill: var(--hpe-new-fill) !important;
+    --read-status-stroke: var(--hpe-new-stroke) !important;
   }
 }
