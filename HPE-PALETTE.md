@@ -39,6 +39,8 @@ tuned for text contrast. Each value in `src/hpe.css` names its token.
 | Folder icons, green text | Green 800 `#006750` | Jade Green `#05CC93` |
 | Unread markers (dot in the list, unread counts) | Purple `#7764FC` | Purple 200 `#9B84FC` |
 | New-mail stars | Cyan `#62E5F6`, Blue `#0070F8` outline | same |
+| Starred mail (table view) | Purple `#7764FC` row, white text, Jade Green `#05CC93` star | same |
+| Starred mail (card view) | Purple tint, Jade Green star | same |
 
 Purple is a touch of accent only: the unread markers and the thread arrow.
 New-mail stars use only secondary colours (Cyan and Blue), so they stand
